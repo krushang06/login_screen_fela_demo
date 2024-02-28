@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+     Base application theme.
+    <style name="Base.Theme.Login_screen_test" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Login_screen_test" parent="Base.Theme.Login_screen_test" />
+
+
+    <!--<style name="Base.Theme.Login_screen_test" parent="Theme.AppCompat.DayNight.NoActionBar">
+        &lt;!&ndash; Customize your light theme here. &ndash;&gt;
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        &lt;!&ndash; Other customizations &ndash;&gt;
+    </style>-->
+
+<!--    <style name="Theme.AppCompat.NoActionBar." parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--        <item name="windowActionBar">true</item>-->
+<!--        <item name="android:windowFullscreen">true</item>-->
+<!--        <item name="android:windowContentOverlay">true</item>-->
+
+<!--    </style>-->
+
+
+</resources>

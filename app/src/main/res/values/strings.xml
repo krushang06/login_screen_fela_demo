@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">login_screen_test</string>
+    <string name="i_ll_do_it_later">I’ll do it later</string>
+    <string name="enter_your_email_address_or_phone_number_and_password_to_access_your_account">Enter your email address or phone number and password to access your account.</string>
+    <string name="email_or_phone_number">Email or Phone number</string>
+    <string name="password">Password</string>
+    <string name="Login">Login</string>
+    <string name="we4">Play different games and compete with your friends! </string>
+    <string name="we3">Save vocabulary to flashcards with pictures and examples to learn and review them easier. </string>
+    <string name="we2">All different resources suitable to your preference. Improve your Listening, Reading, Speaking and Writing skills while enjoying content. </string>
+    <string name="we">We offer 10 dictionaries (and still updating) in different languages for any purpose, for learners everywhere!</string>
+    <string name="hello_blank_fragment">hello blank fragment</string>
+    <string name="learn_and_practice">Learn and Practice</string>
+    <string name="view_all"><u>View All</u>
+</string>
+    <string name="it_terms">IT-Terms</string>
+</resources>
