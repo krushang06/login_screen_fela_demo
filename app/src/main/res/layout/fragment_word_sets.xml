@@ -79,6 +79,19 @@
             tools:listitem="@layout/item_circular_image"
             />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="88dp"
+            android:visibility="visible"
+            android:indeterminateDrawable="@drawable/rainbow_progress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.475"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mostcommonly" />
+
         <TextView
             android:id="@+id/mostcommonly"
             android:layout_width="wrap_content"
@@ -111,11 +124,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="640dp"
+            android:scaleType="center"
             android:layout_marginStart="200dp"
             android:src="@drawable/groupadd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAccessibility="no" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

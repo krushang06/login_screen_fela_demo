@@ -30,6 +30,9 @@ class WordSets : Fragment() {
         binding.toolbar.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.progressBar.visibility = View.VISIBLE
+
+
         recyclerView = binding.circleRecyclerview
         wordSetsAdapter = WordSetsAdapter(ArrayList(), onCategoryImageClickListener)
         binding.circleRecyclerview.adapter = wordSetsAdapter
@@ -44,6 +47,7 @@ class WordSets : Fragment() {
             categoryImages?.let {
                 wordSetsAdapter.setData(categoryImages)
                 binding.circleRecyclerview.adapter = wordSetsAdapter
+                binding.progressBar.visibility = View.GONE // Hide
             }
         }
     }

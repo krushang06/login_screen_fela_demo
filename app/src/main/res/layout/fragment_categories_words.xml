@@ -2,8 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-    </data>
+
+    <data></data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintlayout"
         android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:elevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +26,9 @@
 
                 <TextView
                     android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:elevation="30dp"
                     android:gravity="center"
                     android:text="New Added Words"
@@ -34,32 +36,35 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.473"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/countid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="64dp"
+                    android:layout_marginTop="30dp"
                     android:text="100 words"
                     android:textColor="#7C8CA1"
                     app:layout_constraintEnd_toEndOf="@+id/toolbar"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="@+id/toolbar"
                     app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
                 <ImageView
+                    android:id="@+id/backbutton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
                     android:src="@drawable/backword"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:layout_width="77dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="-25dp"
-                    android:src="@drawable/help"
+                    android:layout_marginEnd="-29dp"
+                    android:background="@drawable/help"
                     app:layout_constraintEnd_toStartOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +72,6 @@
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="-5dp"
                     android:src="@drawable/sortingword"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -76,70 +80,86 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar2">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/sortdown" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appbar2">
 
-            <TextView
-                android:layout_width="89dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:background="@drawable/learingbg"
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/sortdown" />
 
-                android:gravity="center"
-                android:text="Learning"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="normal" />
+                <TextView
+                    android:layout_width="89dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/learingbg"
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:background="@drawable/knowitbg"
-                android:gravity="center"
-                android:text="Know it"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="normal" />
+                    android:gravity="center"
+                    android:text="Learning"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
 
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:background="@drawable/allbg"
-                android:gravity="center"
-                android:text="All"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="normal" />
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/knowitbg"
+                    android:gravity="center"
+                    android:text="Know it"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/searchbg"
-                android:gravity="center"
-                android:text="Know it" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/allbg"
+                    android:gravity="center"
+                    android:text="All"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/searchbg"
+                    android:gravity="center"
+                    android:text="Know it" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ctgwordsRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintTop_toBottomOf="@+id/nestedScrollView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/item_categories_newaddedwords"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

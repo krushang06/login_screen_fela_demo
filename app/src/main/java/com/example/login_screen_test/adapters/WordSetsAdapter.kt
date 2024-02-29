@@ -1,5 +1,6 @@
 package com.example.login_screen_test.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -16,10 +17,11 @@ class WordSetsAdapter(
 ) :
     RecyclerView.Adapter<WordSetsAdapter.CategoryViewHolder>() {
 
-    fun setData(categoryimageList: List<Dataword?>) {
-        categoryimage = categoryimageList as ArrayList<Dataword>
-        notifyDataSetChanged()
-    }
+        @SuppressLint("NotifyDataSetChanged")
+        fun setData(categoryimageList: List<Dataword?>) {
+            categoryimage = categoryimageList as ArrayList<Dataword>
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -43,8 +45,7 @@ class WordSetsAdapter(
 
         holder.binding.circleimage.setOnClickListener {
             onUniversityClickListener.onCategoryimageClicked(categoryimage[position])
-//            val action = WordSetsAdapter.action_wordSets_to_categoriesWords(imageId = categoryImage.id)
-//            holder.itemView.findNavController().navigate(action)
+
         }
 
     }
