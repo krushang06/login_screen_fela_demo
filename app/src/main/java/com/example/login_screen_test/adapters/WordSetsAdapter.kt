@@ -23,17 +23,13 @@ class WordSetsAdapter(
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): CategoryViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): CategoryViewHolder {
         val binding = ItemCircularImageBinding.inflate(
             LayoutInflater.from(parent.context),
             parent, false
         )
         return CategoryViewHolder(binding)
     }
-
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val categoryImage = categoryimage[position]

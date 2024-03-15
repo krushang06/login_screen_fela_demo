@@ -24,7 +24,6 @@ class WordSets : Fragment() {
         view?.let { super.onViewCreated(it, savedInstanceState) }
 
         binding = FragmentWordSetsBinding.inflate(inflater, container, false)
-
         wordSetsViewModel = ViewModelProvider(this)[WordSetsViewModel::class.java]
 
         binding.toolbar.setOnClickListener {
@@ -41,7 +40,6 @@ class WordSets : Fragment() {
         observemodel()
         return binding.root
     }
-
     private fun observemodel() {
         wordSetsViewModel.categoryimage.observe(this) { categoryImages ->
             categoryImages?.let {

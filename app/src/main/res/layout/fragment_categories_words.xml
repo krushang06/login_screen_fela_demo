@@ -81,7 +81,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedScrollView"
+            android:id="@+id/nestedScrollView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -93,7 +93,6 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -101,53 +100,43 @@
                 app:layout_constraintTop_toBottomOf="@+id/appbar2">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
                     android:src="@drawable/sortdown" />
 
-                <TextView
-                    android:layout_width="89dp"
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/learingbg"
+                    android:layout_gravity="center"
+                   />
 
-                    android:gravity="center"
-                    android:text="Learning"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:layout_width="80dp"
+                <ImageView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/knowitbg"
-                    android:gravity="center"
-                    android:text="Know it"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:layout_gravity="center"
+                    />
 
-                <TextView
+                <ImageView
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/allbg"
-                    android:gravity="center"
-                    android:text="All"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:layout_gravity="center" />
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_gravity="center"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/searchbg"
-                    android:gravity="center"
-                    android:text="Know it" />
+                   />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -155,12 +144,13 @@
             android:id="@+id/ctgwordsRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/nestedScrollView"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="60dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nestedScrollView1"
             tools:listitem="@layout/item_categories_newaddedwords"
             />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
