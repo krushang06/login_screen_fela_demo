@@ -22,19 +22,35 @@
             android:background="@drawable/newaddbg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_width="4dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginStart="28dp"
             android:src="@drawable/linebg"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView6"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/smallfavimg"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="9dp"
+            android:src="@drawable/smallstarpng"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView6"
+            app:layout_constraintVertical_bias="0.075"
             tools:ignore="ContentDescription" />
 
         <TextView

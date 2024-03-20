@@ -13,7 +13,7 @@
         >
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/mainbg"
             android:layout_width="match_parent"
             android:layout_height="63dp"
             android:background="@drawable/slaidbg"
@@ -26,17 +26,17 @@
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:layout_marginTop="2dp"
-            android:layout_marginEnd="150dp"
+            android:layout_marginEnd="100dp"
             android:background="@drawable/slaidupbg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/Favoriteimage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/mi_favorite"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +51,9 @@
             android:textSize="12sp"
             android:textColor="#2A4066"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintEnd_toEndOf="@+id/Favoriteimage"
+            app:layout_constraintStart_toStartOf="@+id/Favoriteimage"
+            app:layout_constraintTop_toBottomOf="@+id/Favoriteimage" />
 
         <ImageView
             android:id="@+id/linebg"
@@ -69,7 +69,7 @@
             android:id="@+id/knowitbg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/eva_checkmark_circle_2_outline"
             app:layout_constraintStart_toEndOf="@+id/linebg"
@@ -103,7 +103,7 @@
             android:id="@+id/copybg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="6dp"
             android:background="@drawable/akar_icons_copy"
             app:layout_constraintStart_toEndOf="@+id/linebg2"
@@ -126,7 +126,7 @@
             android:id="@+id/linebg3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:background="@drawable/plainsline"
             app:layout_constraintBottom_toBottomOf="@+id/greybg"
             app:layout_constraintStart_toEndOf="@+id/copytext"
@@ -136,14 +136,11 @@
 
         <ImageView
             android:id="@+id/editbg"
-            android:layout_width="wrap_content"
+            android:layout_width="32dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="6dp"
-            android:layout_marginEnd="18dp"
             android:background="@drawable/ic_outline_report"
-            app:layout_constraintEnd_toEndOf="@+id/greybg"
-
             app:layout_constraintStart_toEndOf="@+id/linebg3"
             app:layout_constraintTop_toTopOf="@+id/greybg" />
 
@@ -164,14 +161,13 @@
             android:id="@+id/newaddedword2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="11dp"
+            android:gravity="center"
             android:text="aunt"
             android:textColor="#2A4066"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="11dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.468"
             app:layout_constraintStart_toEndOf="@+id/greybg"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -184,7 +180,8 @@
             android:textSize="16sp"
             android:gravity="center"
             android:textStyle="normal"
-            android:layout_marginTop="-10dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="11dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="@+id/newaddedword2"
             app:layout_constraintStart_toStartOf="@+id/newaddedword2"
