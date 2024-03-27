@@ -64,6 +64,7 @@ class CategoriesWordsViewModel : ViewModel() {
             }
         }
     }
+
 }
 
 

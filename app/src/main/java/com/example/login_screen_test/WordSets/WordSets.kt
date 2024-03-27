@@ -26,7 +26,7 @@ class WordSets : Fragment() {
         binding = FragmentWordSetsBinding.inflate(inflater, container, false)
         wordSetsViewModel = ViewModelProvider(this)[WordSetsViewModel::class.java]
 
-        binding.toolbar.setOnClickListener {
+        binding.backbuttonwordset.setOnClickListener {
             findNavController().popBackStack()
         }
         binding.progressBar.visibility = View.VISIBLE

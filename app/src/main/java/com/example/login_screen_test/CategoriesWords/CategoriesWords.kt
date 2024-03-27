@@ -1,15 +1,20 @@
 package com.example.login_screen_test.CategoriesWords
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.login_screen_test.R
 import com.example.login_screen_test.adapters.CategoriesWordsAdapter
 import com.example.login_screen_test.databinding.FragmentCategoriesWordsBinding
 
@@ -17,41 +22,97 @@ import com.example.login_screen_test.databinding.FragmentCategoriesWordsBinding
 class CategoriesWords : Fragment() {
     private lateinit var binding: FragmentCategoriesWordsBinding
     private lateinit var categoriesWordsViewModel: CategoriesWordsViewModel
-//    private lateinit var favoriteWordViewModel: FavoriteWordViewModel
     private lateinit var categorieswordsadapter: CategoriesWordsAdapter
     private lateinit var recyclerView: RecyclerView
+    private var allWordList = ArrayList<CategoryWords>()
+    private var isEdit: Boolean = false
+    private lateinit var searchingView: View
+    private var searchText = ""
+    val selectedBackground = R.drawable.selectedbg
+    val unselectedBackground = R.drawable.unselectedbg
 
     private val args by navArgs<CategoriesWordsArgs>()
 
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         view?.let { super.onViewCreated(it, savedInstanceState) }
 
         binding = FragmentCategoriesWordsBinding.inflate(inflater, container, false)
 
         categoriesWordsViewModel = ViewModelProvider(this)[CategoriesWordsViewModel::class.java]
-//        favoriteWordViewModel = ViewModelProvider(this)[FavoriteWordViewModel::class.java]
 
         binding.backbutton.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.progressBaraddedwords.visibility = View.VISIBLE
+        binding.knowitwordsimg.setOnClickListener {
+            isEdit = !isEdit
+            categorieswordsadapter.setEditMode(isEdit)
+            handleKnowItWordsImgClick()
+            binding.knowitwordsimg.setBackgroundResource(selectedBackground)
+            binding.learnitwordsimg.setBackgroundResource(unselectedBackground)
+            binding.allwordsimg.setBackgroundResource(unselectedBackground)
+        }
+        binding.learnitwordsimg.setOnClickListener {
+            isEdit = !isEdit
+            categorieswordsadapter.setEditMode(isEdit)
+            handlelearnItWordsImgClick()
+            binding.learnitwordsimg.setBackgroundResource(selectedBackground)
+            binding.knowitwordsimg.setBackgroundResource(unselectedBackground)
+            binding.allwordsimg.setBackgroundResource(unselectedBackground)
+
+        }
+        binding.allwordsimg.setOnClickListener {
+            isEdit = !isEdit
+            categorieswordsadapter.setEditMode(isEdit)
+            handleAllWordsImgClick()
+            binding.allwordsimg.setBackgroundResource(selectedBackground)
+            binding.knowitwordsimg.setBackgroundResource(unselectedBackground)
+            binding.learnitwordsimg.setBackgroundResource(unselectedBackground)
+
+        }
+        binding.searchView.ETAutoComplete.visibility = View.GONE  // view gone logic
+        binding.searchView.cancelsmallimg.visibility = View.GONE  // view gone logic
+
+        binding.searchView.cancelsmallimg.setOnClickListener {  // cancel btn close
+            binding.searchView.ETAutoComplete.visibility = View.GONE
+            binding.searchView.cancelsmallimg.visibility = View.GONE
+
+        }
+        binding.searchwordimg.setOnClickListener {
+                binding.searchView.ETAutoComplete.visibility = View.VISIBLE
+                binding.searchView.cancelsmallimg.visibility = View.VISIBLE
+        }
+        binding.searchView.ETAutoComplete.addTextChangedListener(object : TextWatcher {
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                searchText = p0.toString()
+                searchIncompleteTask(searchText)
+
+            }
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })
 
         recyclerView = binding.ctgwordsRV
-
         categorieswordsadapter = CategoriesWordsAdapter(
             ArrayList(),
             recyclerView,
-            onfavroiteclicklistener
+            onfavroiteclicklistener, onKnowItClickListener
         )
         binding.ctgwordsRV.adapter = categorieswordsadapter
 
         val itemTouchHelper = ItemTouchHelper(categorieswordsadapter.itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.ctgwordsRV)
 
-        categoriesWordsViewModel.fetchCategories(requireContext(),id = args.imageId)
-
+        categoriesWordsViewModel.fetchCategories(requireContext(), id = args.imageId)
 
         observeCategoriesWords()
 
@@ -59,47 +120,91 @@ class CategoriesWords : Fragment() {
 
         return binding.root
     }
+    private fun searchIncompleteTask(s: String) {
+        val filteredWords = allWordList.filter { it.word?.contains(s, true) == true }
+        val filteredCategories = when {
+            s.equals("knowitwordsimg", ignoreCase = true) -> allWordList.filter { it.isKnowIt == true }
+            s.equals("learnitwordsimg", ignoreCase = true) -> allWordList.filter { it.isKnowIt == false }
+            s.equals("allwordsimg", ignoreCase = true) -> allWordList
+            else -> emptyList()
+        }
+        categorieswordsadapter.filter(filteredWords + filteredCategories)
+    }
 
-        private fun observeCategoriesWords() {
-        categoriesWordsViewModel.CategoriesWord.observe(this)  { CategoriesWords ->
+
+    private fun observeCategoriesWords() {
+        categoriesWordsViewModel.CategoriesWord.observe(this) { CategoriesWords ->
             CategoriesWords?.let {
+                binding.learnitwordsimg.setBackgroundResource(selectedBackground)
                 categorieswordsadapter.setData(CategoriesWords)
+                allWordList.addAll(CategoriesWords as ArrayList<CategoryWords>)
+                binding.progressBaraddedwords.visibility = View.GONE
             }
         }
     }
+
     private fun observeFavoriteWords() {
         categoriesWordsViewModel.favoriteWord.observe(viewLifecycleOwner) { isFavorite ->
             isFavorite?.let {
                 categorieswordsadapter.setfavData(toString())
             }
         }
-        
     }
+
     val onfavroiteclicklistener by lazy {
         object : CategoriesWordsAdapter.OnFavoriteClickListener {
-
             override fun onFavoriteClicked(categoryWord: CategoryWords) {
-                val favoriteData = categoryWord.word?.let { FavoriteRequest(word = it, faker = " ") }
+                val favoriteData =
+                    categoryWord.word?.let { FavoriteRequest(word = it, faker = " ") }
                 if (favoriteData != null) {
                     categoriesWordsViewModel.fetchFavourite(favoriteData, requireContext())
                 }
-
                 categoryWord.isFavourite
                 if (categoryWord.isFavourite == false) {
-//                    Toast.makeText(requireContext(), "Added to favorites", Toast.LENGTH_SHORT).show()
                     categoryWord.isFavourite = true
                     categorieswordsadapter.notifyDataSetChanged()
                 } else if (categoryWord.isFavourite == true) {
-//                    Toast.makeText(requireContext(), "Removed from favorites", Toast.LENGTH_SHORT).show()
                     categoryWord.isFavourite = false
                     categorieswordsadapter.notifyDataSetChanged()
                 }
             }
-
-            override fun onCopyClicked(categoryWord: CategoryWords) {
-                TODO("Not yet implemented")
+        }
+    }
+    val onKnowItClickListener by lazy {
+        object : CategoriesWordsAdapter.OnKnowItClickListener {
+            override fun onKnowItClicked(categoryWord: CategoryWords) {
+                categoryWord.isKnowIt?.let { isKnowIt ->
+                    categoryWord.isKnowIt = !isKnowIt
+                    allWordList.find { categoryWord.word == it.word }?.isKnowIt = !isKnowIt
+                    if (isKnowIt == false) {
+                        Toast.makeText(requireContext(), "Know It Done", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(requireContext(), "Not Know It", Toast.LENGTH_SHORT).show()
+                    }
+                    categorieswordsadapter.notifyDataSetChanged()
+                }
             }
         }
+    }
+
+    private fun handleKnowItWordsImgClick() {
+        val knowItItems = allWordList.filter { it.isKnowIt == true }
+        categorieswordsadapter.categoryWords.clear()
+        categorieswordsadapter.categoryWords.addAll(knowItItems)
+        categorieswordsadapter.notifyDataSetChanged()
+    }
+
+    private fun handlelearnItWordsImgClick() {
+        val learnItItems = allWordList.filter { it.isKnowIt == false }
+        categorieswordsadapter.categoryWords.clear()
+        categorieswordsadapter.categoryWords.addAll(learnItItems)
+        categorieswordsadapter.notifyDataSetChanged()
+    }
+
+    private fun handleAllWordsImgClick() {
+        categorieswordsadapter.categoryWords.clear()
+        categorieswordsadapter.categoryWords.addAll(allWordList)
+        categorieswordsadapter.notifyDataSetChanged()
     }
 }
 
