@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/book"
+        android:icon="@mipmap/felanewlogo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/book"
+        android:roundIcon="@mipmap/felanewlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login_screen_test"
         tools:targetApi="tiramisu">

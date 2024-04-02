@@ -46,6 +46,10 @@
         <action
             android:id="@+id/action_wordSets_to_categoriesWords"
             app:destination="@id/categoriesWords" />
+        <action
+            android:id="@+id/action_wordSets_to_wordGroup"
+            app:destination="@id/wordGroup" />
+
 
     </fragment>
     <fragment
@@ -56,15 +60,27 @@
         <argument
             android:name="imageId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/wordGroup"
+        android:name="com.example.login_screen_test.FavoriteWordGroups.WordGroup"
+        android:label="WordGroup"
+        tools:layout="@layout/fragment_word_group">
         <action
-            android:id="@+id/action_categoriesWords_to_swipe"
-            app:destination="@id/swipebal" />
+            android:id="@+id/action_wordGroup_to_myFavGroups"
+            app:destination="@id/myFavGroups" />
 
     </fragment>
     <fragment
-        android:id="@+id/swipebal"
-        android:name="com.example.login_screen_test.Swipeview.Swipebal"
-        android:label="Swipebal"
-        tools:layout="@layout/fragment_swipe"/>
+        android:id="@+id/myFavGroups"
+        android:name="com.example.login_screen_test.MyFavoriteGroup.MyFavGroups"
+        android:label="MyFavGroups"
+        tools:layout="@layout/fragment_my_fav_groups">
+
+        <argument
+            android:name="enteredText"
+            app:argType="string" />
+    </fragment>
+
 
 </navigation>

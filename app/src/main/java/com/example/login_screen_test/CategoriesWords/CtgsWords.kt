@@ -170,7 +170,6 @@ data class CategoryWords (
     @SerializedName("word_translation"                 ) var wordTranslation               : WordTranslation?                        = WordTranslation(),
     @SerializedName("word_sentences"                   ) var wordSentences                 : ArrayList<WordSentences>                = arrayListOf(),
     @SerializedName("word_audio"                       ) var wordAudio                     : WordAudio?                              = WordAudio()
-
 )
 
 

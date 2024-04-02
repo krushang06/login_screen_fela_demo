@@ -16,56 +16,55 @@
             android:id="@+id/imageView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="46dp"
+            android:layout_marginEnd="13dp"
             android:layout_marginBottom="4dp"
             android:background="@drawable/newaddbg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="4dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="28dp"
             android:src="@drawable/linebg"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView6"
-            tools:ignore="ContentDescription" />
-        <ImageView
-            android:id="@+id/imageView99"
-            android:layout_width="4dp"
-            android:layout_height="21dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="28dp"
-            android:src="@drawable/linebg"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/imageView6"
             app:layout_constraintTop_toTopOf="@+id/imageView6"
             tools:ignore="ContentDescription" />
 
         <ImageView
-            android:id="@+id/smallfavimg"
+            android:id="@+id/imageView99myfav"
+            android:layout_width="4dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/linebg"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="@id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView6"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/smallstarmyfav"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_marginTop="1.5dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="1.5dp"
             android:src="@drawable/smallstarpng"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
             app:layout_constraintStart_toStartOf="@+id/imageView6"
             app:layout_constraintTop_toTopOf="@+id/imageView6"
-            app:layout_constraintVertical_bias="0.075"
+            app:layout_constraintVertical_bias="0.04"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/newaddedword"
+            android:id="@+id/newaddedwordmyfav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -81,7 +80,7 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/smallname"
+            android:id="@+id/smallnamemyfav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -116,6 +115,21 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
             app:layout_constraintEnd_toEndOf="@+id/imageView6"
             app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+        <CheckBox
+            android:id="@+id/checkboxmyfav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="14dp"
+            android:text=""
+            android:button="@drawable/chekcbox_selector"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

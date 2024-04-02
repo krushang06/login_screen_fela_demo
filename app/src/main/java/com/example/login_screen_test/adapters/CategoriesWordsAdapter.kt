@@ -2,13 +2,11 @@ package com.example.login_screen_test.adapters
 
 import android.annotation.SuppressLint
 import android.graphics.Canvas
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.login_screen_test.CategoriesWords.CategoriesWords
 import com.example.login_screen_test.CategoriesWords.CategoryWords
 import com.example.login_screen_test.R
 import com.example.login_screen_test.databinding.ItemCategoriesNewaddedwordsBinding
@@ -35,25 +33,30 @@ class CategoriesWordsAdapter(
         notifyDataSetChanged()
         filteredList.addAll(categoryWords)
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun filter(filteredWords: List<CategoryWords>) {
         categoryWords.clear()
         categoryWords.addAll(filteredWords)
         notifyDataSetChanged()
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun setfavData(favlist: String) {
         favlist.forEach { it.let { categoryWords } }
         notifyDataSetChanged()
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun setEditMode(enabled: Boolean) {
         isEdit = enabled
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun handleFavoriteAction(categoryWord: CategoryWords) {
         categoryWord.isFavourite
         onfavroiteclicklistener.onFavoriteClicked(categoryWord)
         notifyDataSetChanged()
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun handleKnowitAction(categoryWord: CategoryWords) {
         categoryWord.isKnowIt == true
         onknowitclicklistener.onKnowItClicked(categoryWord)
@@ -129,6 +132,10 @@ class CategoriesWordsAdapter(
 
                 smallfavimg.visibility = if (categoryWord.isFavourite == true)
                     View.VISIBLE else View.GONE
+                imageView99.visibility = if (categoryWord.isFavourite == true)
+                    View.VISIBLE else View.GONE
+
+
 
             }
         }
@@ -137,21 +144,13 @@ class CategoriesWordsAdapter(
     inner class SwipeableCategoryWordsViewHolder(private val binding: ItemSlaidBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        init {
-            binding.root.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                }
-            }
-        }
-
         fun bind(categoryWord: CategoryWords) {
             binding.apply {
                 newaddedword2.text = categoryWord.word
                 smallname2.text = categoryWord.wordTranslation?.translation?.toString()
                 textView8.text = if (categoryWord.isFavourite == true) "Unfavorites" else "Favorites"
 
-                Favoriteimage.setImageResource(if (categoryWord.isFavourite == true)(R.drawable.unfavorite)else R.drawable.mi_favorite )
+                Favoriteimage.setImageResource(if (categoryWord.isFavourite == true)(R.drawable.unfavorite)else R.drawable.mi_favorite)
 
                 Favoriteimage.setOnClickListener {handleFavoriteAction(categoryWord)
                     closeOpenMenu()
@@ -184,6 +183,7 @@ class CategoriesWordsAdapter(
                 return false
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.absoluteAdapterPosition
                 val categoryWord = categoryWords[position]
@@ -191,9 +191,6 @@ class CategoriesWordsAdapter(
                     menuPos = position
                     notifyDataSetChanged()
                     false
-
-                } else if (direction == ItemTouchHelper.LEFT) {
-
                 }
             }
 

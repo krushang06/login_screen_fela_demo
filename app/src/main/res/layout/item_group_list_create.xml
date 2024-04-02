@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginStart="28dp"
+            android:visibility="gone"
             android:src="@drawable/linebg"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,8 +56,9 @@
             android:id="@+id/smallfavimg"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_marginTop="1.5dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:padding="1dp"
             android:src="@drawable/smallstarpng"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
             app:layout_constraintStart_toStartOf="@+id/imageView6"
@@ -65,7 +67,7 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/newaddedword"
+            android:id="@+id/bignamegroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -75,13 +77,13 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintStart_toEndOf="@+id/imageView99"
             app:layout_constraintTop_toTopOf="@+id/imageView6"
             app:layout_constraintVertical_bias="0.297"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/smallname"
+            android:id="@+id/smallnamegroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -91,7 +93,7 @@
             android:textSize="16sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintStart_toEndOf="@+id/imageView99"
             app:layout_constraintTop_toTopOf="@+id/imageView6"
             app:layout_constraintVertical_bias="0.803"
             tools:ignore="ContentDescription" />

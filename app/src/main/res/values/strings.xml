@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">login_screen_test</string>
+    <string name="app_name">Fela</string>
     <string name="i_ll_do_it_later">I’ll do it later</string>
     <string name="enter_your_email_address_or_phone_number_and_password_to_access_your_account">Enter your email address or phone number and password to access your account.</string>
     <string name="email_or_phone_number">Email or Phone number</string>
@@ -14,4 +14,6 @@
     <string name="view_all"><u>View All</u>
 </string>
     <string name="it_terms">IT-Terms</string>
+    <string name="create_a_naw_group"><u>Create a naw group</u></string>
+    <string name="edit"><u>Edit</u></string>
 </resources>

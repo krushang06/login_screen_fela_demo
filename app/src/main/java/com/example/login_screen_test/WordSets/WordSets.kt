@@ -29,6 +29,9 @@ class WordSets : Fragment() {
         binding.backbuttonwordset.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.groupadd.setOnClickListener {
+            findNavController().navigate(WordSetsDirections.actionWordSetsToWordGroup())
+        }
         binding.progressBar.visibility = View.VISIBLE
 
 
