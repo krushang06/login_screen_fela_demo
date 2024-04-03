@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_screen_test.MyFavoriteGroup.Favourite
+import com.example.login_screen_test.MyFavoriteGroup.Wordss
 import com.example.login_screen_test.databinding.ItemMyFavGroupsBinding
 
 class MyFavGroupAdapter(
     private var MyGroup: ArrayList<Favourite?>,
 ) :
     RecyclerView.Adapter<MyFavGroupAdapter.MyFavGroupViewHolder>() {
+//    private val selectedItems = ArrayList<Wordss>()
 
     @SuppressLint("NotifyDataSetChanged")
     fun setDatafavtable(wordGroupList: List<Favourite?>) {
@@ -36,8 +38,16 @@ class MyFavGroupAdapter(
         val isSelected = myGroup?.word?.word_translation ?: false
         if (isSelected == true) {
             holder.binding.checkboxmyfav.isChecked = true
+            holder.binding.checkboxmyfav.setOnClickListener {
+                holder.binding.checkboxmyfav.isChecked = true
+                holder.binding.checkboxmyfav.isClickable = false
+            }
         } else {
             holder.binding.checkboxmyfav.isChecked = false
+            holder.binding.checkboxmyfav.setOnClickListener {
+                holder.binding.checkboxmyfav.isChecked = false
+                holder.binding.checkboxmyfav.isClickable = false
+            }
         }
     }
 

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.login_screen_test.adapters.MyFavGroupAdapter
 import com.example.login_screen_test.databinding.FragmentMyFavGroupsBinding
 
-
 class MyFavGroups : Fragment() {
     private lateinit var binding: FragmentMyFavGroupsBinding
     private lateinit var myFavGroupViewModel: MyFavGroupViewModel
@@ -28,7 +27,7 @@ class MyFavGroups : Fragment() {
     ): View {
         binding = FragmentMyFavGroupsBinding.inflate(inflater, container, false)
         myFavGroupViewModel = ViewModelProvider(this).get(MyFavGroupViewModel::class.java)
-        myFavGroupViewModel.fetchmyfavgroup(requireContext(),args.enteredText)
+        myFavGroupViewModel.fetchmyfavgroup(requireContext(), args.enteredText)
         binding.backbuttonmyfav.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -40,7 +39,7 @@ class MyFavGroups : Fragment() {
 
         binding.groupnameadd.text = args.enteredText  // args name pass send to recive text name
         binding.creatgroups.setOnClickListener {
-            findNavController().navigate(MyFavGroupsDirections.actionMyFavGroupsToGroupListCreate(toString()))
+            findNavController().navigate(MyFavGroupsDirections.actionMyFavGroupsToGroupListCreate(args.enteredText))
         }
         observemodel()
         return binding.root
@@ -51,9 +50,7 @@ class MyFavGroups : Fragment() {
                 myFavGroupAdapter.setDatafavtable(fwg)
                 binding.myfavRV.adapter = myFavGroupAdapter
                 binding.progressBarMyFav.visibility = View.GONE
-
             }
         }
     }
-
 }

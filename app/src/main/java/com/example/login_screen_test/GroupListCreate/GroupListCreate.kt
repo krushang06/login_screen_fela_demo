@@ -1,18 +1,14 @@
 package com.example.login_screen_test.GroupListCreate
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
-import com.example.login_screen_test.MyFavoriteGroup.MyFavGroupViewModel
-import com.example.login_screen_test.MyFavoriteGroup.MyFavGroupsArgs
-import com.example.login_screen_test.R
-import com.example.login_screen_test.adapters.MyFavGroupAdapter
 import com.example.login_screen_test.databinding.FragmentGroupListCreateBinding
 
 class GroupListCreate : Fragment() {
