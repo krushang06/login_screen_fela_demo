@@ -39,7 +39,9 @@ class MyFavGroups : Fragment() {
         binding.myfavRV.adapter = myFavGroupAdapter
 
         binding.groupnameadd.text = args.enteredText  // args name pass send to recive text name
-
+        binding.creatgroups.setOnClickListener {
+            findNavController().navigate(MyFavGroupsDirections.actionMyFavGroupsToGroupListCreate(toString()))
+        }
         observemodel()
         return binding.root
     }
@@ -53,6 +55,5 @@ class MyFavGroups : Fragment() {
             }
         }
     }
-
 
 }

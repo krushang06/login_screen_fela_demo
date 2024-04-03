@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_screen_test.MyFavoriteGroup.Favourite
-import com.example.login_screen_test.R
 import com.example.login_screen_test.databinding.ItemMyFavGroupsBinding
 
 class MyFavGroupAdapter(
-    private var MyGroup:ArrayList<Favourite?>
-    ) :
+    private var MyGroup: ArrayList<Favourite?>,
+) :
     RecyclerView.Adapter<MyFavGroupAdapter.MyFavGroupViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
@@ -31,10 +30,10 @@ class MyFavGroupAdapter(
     }
 
     override fun onBindViewHolder(holder: MyFavGroupViewHolder, position: Int) {
-        val MyGroup = MyGroup[position]
-        holder.binding.newaddedwordmyfav.text = MyGroup?.word?.word.toString()
-        holder.binding.smallnamemyfav.text = MyGroup?.word?.word_translation?.translation.toString()
-        val isSelected = MyGroup?.word?.word_translation?: false
+        val myGroup = MyGroup[position]
+        holder.binding.newaddedwordmyfav.text = myGroup?.word?.word.toString()
+        holder.binding.smallnamemyfav.text = myGroup?.word?.word_translation?.translation.toString()
+        val isSelected = myGroup?.word?.word_translation ?: false
         if (isSelected == true) {
             holder.binding.checkboxmyfav.isChecked = true
         } else {

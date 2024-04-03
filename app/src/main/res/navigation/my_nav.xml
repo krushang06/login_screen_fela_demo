@@ -76,9 +76,20 @@
         android:name="com.example.login_screen_test.MyFavoriteGroup.MyFavGroups"
         android:label="MyFavGroups"
         tools:layout="@layout/fragment_my_fav_groups">
-
         <argument
             android:name="enteredText"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_myFavGroups_to_groupListCreate"
+            app:destination="@id/groupListCreate" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupListCreate"
+        android:name="com.example.login_screen_test.GroupListCreate.GroupListCreate"
+        android:label="GroupListCreate"
+        tools:layout="@layout/fragment_group_list_create" >
+        <argument
+            android:name="enteredText2"
             app:argType="string" />
     </fragment>
 

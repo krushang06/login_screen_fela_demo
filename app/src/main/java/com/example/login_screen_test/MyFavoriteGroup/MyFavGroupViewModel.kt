@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
-class MyFavGroupViewModel: ViewModel() {
+class MyFavGroupViewModel : ViewModel() {
 
     private val _myfavgroupword = MutableLiveData<List<Favourite?>>()
     val myfavgroupWordss: MutableLiveData<List<Favourite?>> = _myfavgroupword
