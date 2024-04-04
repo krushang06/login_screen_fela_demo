@@ -53,7 +53,8 @@ class WordGroup : Fragment() {
         binding.include.selectwordid.setOnClickListener {
             val name = binding.include.editTextid.text.toString().trim()
             val action = WordGroupDirections.actionWordGroupToMyFavGroups(enteredText = name)
-            findNavController().navigate(action)}
+            findNavController().navigate(action)
+        }
 
         observemodel()
 

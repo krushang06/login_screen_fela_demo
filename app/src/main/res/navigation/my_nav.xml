@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_myFavGroups_to_groupListCreate"
             app:destination="@id/groupListCreate" />
+        <action
+            android:id="@+id/action_myFavGroups_to_wordGroup"
+            app:destination="@id/wordGroup" />
     </fragment>
     <fragment
         android:id="@+id/groupListCreate"

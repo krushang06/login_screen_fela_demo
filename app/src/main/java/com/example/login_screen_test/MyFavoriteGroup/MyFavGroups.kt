@@ -1,15 +1,16 @@
 package com.example.login_screen_test.MyFavoriteGroup
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
-
+import com.example.login_screen_test.CategoriesWords.FavoriteRequest
+import com.example.login_screen_test.GroupListCreate.GLCRequest
 import com.example.login_screen_test.adapters.MyFavGroupAdapter
 import com.example.login_screen_test.databinding.FragmentMyFavGroupsBinding
 
@@ -27,7 +28,11 @@ class MyFavGroups : Fragment() {
     ): View {
         binding = FragmentMyFavGroupsBinding.inflate(inflater, container, false)
         myFavGroupViewModel = ViewModelProvider(this).get(MyFavGroupViewModel::class.java)
-        myFavGroupViewModel.fetchmyfavgroup(requireContext(), args.enteredText)
+
+        myFavGroupViewModel.fetchmyfavgroup(requireContext())
+
+        myFavGroupViewModel.fetchcreategroup(GLCRequest(word_ids = ArrayList(), name = args.enteredText), requireContext())
+
         binding.backbuttonmyfav.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -39,16 +44,30 @@ class MyFavGroups : Fragment() {
 
         binding.groupnameadd.text = args.enteredText  // args name pass send to recive text name
         binding.creatgroups.setOnClickListener {
-            findNavController().navigate(MyFavGroupsDirections.actionMyFavGroupsToGroupListCreate(args.enteredText))
+            observemodelgroup()
+            val selectedFavourites = myFavGroupAdapter.getSelectedItems()
+            myFavGroupViewModel.myfavgroupWordss.value = ArrayList(selectedFavourites)
+            findNavController().navigate(MyFavGroupsDirections.actionMyFavGroupsToWordGroup())
+
         }
         observemodel()
         return binding.root
     }
+
     private fun observemodel() {
         myFavGroupViewModel.myfavgroupWordss.observe(this) { fwg ->
             fwg?.let {
                 myFavGroupAdapter.setDatafavtable(fwg)
                 binding.myfavRV.adapter = myFavGroupAdapter
+                binding.progressBarMyFav.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun observemodelgroup() {
+        myFavGroupViewModel.createlistgroup.observe(this) { fwg2 ->
+            fwg2?.let {
+                myFavGroupAdapter.setEditMode(fwg2)
                 binding.progressBarMyFav.visibility = View.GONE
             }
         }

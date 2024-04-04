@@ -7,6 +7,7 @@ import com.example.login_screen_test.GroupListCreate.GLCRequest
 import com.example.login_screen_test.LoginData.LoginRequest
 import com.example.login_screen_test.LoginData.LoginResponse
 import com.example.login_screen_test.MyFavoriteGroup.MyFavRespons
+import com.example.login_screen_test.MyFavoriteGroup.creategrouplist
 import com.example.login_screen_test.WordSets.Wordset
 import com.example.login_screen_test.home.HomeResponse
 import retrofit2.Response
@@ -30,7 +31,7 @@ interface FelaApiService {
     suspend fun getCategoryWords(@Path("categoryId") categoryId: Int): CtgsWords
 
     @POST("favourite/word")
-    suspend fun getFavourite(@Body word: FavoriteRequest): Response <CtgsWords>
+    suspend fun getFavourite(@Body word: FavoriteRequest): Response<CtgsWords>
 
     @GET("group-lists")
     suspend fun getFavWordGroup(): FavWordGroup
@@ -39,6 +40,6 @@ interface FelaApiService {
     suspend fun getFavKnowItWords(): MyFavRespons
 
     @POST("group-list/create")
-    suspend fun getcreateFavWordGroup(@Body name: GLCRequest): Response<FavWordGroup> // working
+    suspend fun getcreateFavWordGroup(@Body word_id: GLCRequest): Response<creategrouplist> //  working
 
 }
