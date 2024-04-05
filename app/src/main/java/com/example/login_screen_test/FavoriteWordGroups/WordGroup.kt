@@ -1,10 +1,13 @@
 package com.example.login_screen_test.FavoriteWordGroups
 
+import android.R
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.login_screen_test.adapters.WordGroupAdapter
 import com.example.login_screen_test.databinding.CustomDialogLayoutBinding
 import com.example.login_screen_test.databinding.FragmentWordGroupBinding
+
 
 class WordGroup : Fragment() {
     private lateinit var binding: FragmentWordGroupBinding
@@ -33,8 +37,12 @@ class WordGroup : Fragment() {
         binding.backbuttonfavorite.setOnClickListener {
             findNavController().popBackStack()
         }
-
+        val progressBar: ProgressBar = binding.progressBar
+        val animation = ObjectAnimator.ofInt(progressBar, "progress", 0, 100)
+        animation.setDuration(5000) // 5000ms = 5s
         binding.progressBar.visibility = View.VISIBLE
+
+        animation.start()
 
         recyclerView = binding.wordgrouprecyclerview
         wordGroupAdapter = WordGroupAdapter(ArrayList())
