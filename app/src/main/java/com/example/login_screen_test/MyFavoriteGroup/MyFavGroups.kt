@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
-import com.example.login_screen_test.CategoriesWords.FavoriteRequest
 import com.example.login_screen_test.GroupListCreate.GLCRequest
 import com.example.login_screen_test.adapters.MyFavGroupAdapter
 import com.example.login_screen_test.databinding.FragmentMyFavGroupsBinding
@@ -31,11 +30,11 @@ class MyFavGroups : Fragment() {
 
         myFavGroupViewModel.fetchmyfavgroup(requireContext())
 
-        myFavGroupViewModel.fetchcreategroup(GLCRequest(word_ids = ArrayList(), name = args.enteredText), requireContext())
 
         binding.backbuttonmyfav.setOnClickListener {
             findNavController().popBackStack()
         }
+
         binding.progressBarMyFav.visibility = View.VISIBLE
 
         recyclerView = binding.myfavRV
@@ -43,14 +42,21 @@ class MyFavGroups : Fragment() {
         binding.myfavRV.adapter = myFavGroupAdapter
 
         binding.groupnameadd.text = args.enteredText  // args name pass send to recive text name
-        binding.creatgroups.setOnClickListener {
-            observemodelgroup()
-            val selectedFavourites = myFavGroupAdapter.getSelectedItems()
-            myFavGroupViewModel.myfavgroupWordss.value = ArrayList(selectedFavourites)
-            findNavController().navigate(MyFavGroupsDirections.actionMyFavGroupsToWordGroup())
 
+        binding.creatgroups.setOnClickListener {
+            val selectedFavourites = myFavGroupAdapter.getSelectedItems() // adepter mathi data pass
+
+            myFavGroupViewModel.myfavgroupWordss.value = ArrayList(selectedFavourites)  // user data pass in array
+
+            val selectedWordIds: List<Int> = selectedFavourites.map { it.word_id }  // adepter mathi id pass krava kai id uprna all data lay java che
+
+            myFavGroupViewModel.fetchcreategroup(GLCRequest(word_ids = selectedWordIds, name = args.enteredText), requireContext())   // api call function with request clas in mention that
+
+            observemodelgroup()
         }
+
         observemodel()
+
         return binding.root
     }
 
@@ -66,8 +72,8 @@ class MyFavGroups : Fragment() {
 
     private fun observemodelgroup() {
         myFavGroupViewModel.createlistgroup.observe(this) { fwg2 ->
-            fwg2?.let {
-                myFavGroupAdapter.setEditMode(fwg2)
+            if (fwg2 == true) {
+                findNavController().popBackStack()
                 binding.progressBarMyFav.visibility = View.GONE
             }
         }

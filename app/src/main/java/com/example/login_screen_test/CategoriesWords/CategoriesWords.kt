@@ -5,21 +5,21 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_screen_test.R
-import com.example.login_screen_test.utils.WordListTypes
 import com.example.login_screen_test.adapters.CategoriesWordsAdapter
 import com.example.login_screen_test.databinding.FragmentCategoriesWordsBinding
+import com.example.login_screen_test.utils.WordListTypes
 
 
 class CategoriesWords : Fragment() {

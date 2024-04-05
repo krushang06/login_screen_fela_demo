@@ -18,6 +18,7 @@ class MyFavGroupViewModel : ViewModel() {
     private val _createlistgroup = MutableLiveData<Boolean>()
     val createlistgroup: MutableLiveData<Boolean> = _createlistgroup
 
+    // get myfavgroup api calling
     fun fetchmyfavgroup(context: Context) {
         viewModelScope.launch {
             try {
@@ -40,11 +41,13 @@ class MyFavGroupViewModel : ViewModel() {
         }
     }
 
+    //create group api calling
     fun fetchcreategroup(glcRequest: GLCRequest, context: Context) {
         viewModelScope.launch {
             try {
                 val retin = RetrofitClientUrl.getRetrofitInstance(context)
                 val response = retin.getcreateFavWordGroup(glcRequest)
+                // call on this model cheke the response
                 if (response.isSuccessful) {
                     response.body()
                     _createlistgroup.value = true

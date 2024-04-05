@@ -32,6 +32,7 @@ class MyFavGroupAdapter(private var MyGroup: MutableList<Favourite?>) :
                 binding.newaddedwordmyfav.text = it.word.word.toString()
                 binding.smallnamemyfav.text = it.word.word_translation.translation.toString()
 
+                //chekbox to selscted or not
                 binding.checkboxmyfav.isChecked = selecteditem.any{it.word_id == favourite.word_id}
                 binding.checkboxmyfav.setOnCheckedChangeListener { _, isChecked ->
                    val selectedItems = selecteditem

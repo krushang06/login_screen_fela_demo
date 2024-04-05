@@ -40,6 +40,6 @@ interface FelaApiService {
     suspend fun getFavKnowItWords(): MyFavRespons
 
     @POST("group-list/create")
-    suspend fun getcreateFavWordGroup(@Body word_id: GLCRequest): Response<creategrouplist> //  working
+    suspend fun getcreateFavWordGroup(@Body word_id: GLCRequest): Response<creategrouplist>
 
 }
