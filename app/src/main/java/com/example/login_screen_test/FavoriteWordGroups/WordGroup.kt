@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.login_screen_test.adapters.WordGroupAdapter
 import com.example.login_screen_test.databinding.CustomDialogLayoutBinding
@@ -37,6 +38,9 @@ class WordGroup : Fragment() {
         binding.backbuttonfavorite.setOnClickListener {
             findNavController().popBackStack()
         }
+
+
+
         val progressBar: ProgressBar = binding.progressBar
         val animation = ObjectAnimator.ofInt(progressBar, "progress", 0, 100)
         animation.setDuration(5000) // 5000ms = 5s
@@ -47,6 +51,9 @@ class WordGroup : Fragment() {
         recyclerView = binding.wordgrouprecyclerview
         wordGroupAdapter = WordGroupAdapter(ArrayList())
         binding.wordgrouprecyclerview.adapter = wordGroupAdapter
+
+        val itemTouchHelper = ItemTouchHelper(wordGroupAdapter.itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(binding.wordgrouprecyclerview)
 
         binding.include.root.visibility = View.GONE
         binding.createanewgroup.setOnClickListener {
@@ -76,6 +83,7 @@ class WordGroup : Fragment() {
             }
         }
     }
-}
 
+
+}
 

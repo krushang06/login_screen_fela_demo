@@ -24,6 +24,7 @@ class WordSetsViewModel : ViewModel() {
             try {
                 val retin = RetrofitClientUrl.getRetrofitInstance(context)
                 val response = retin.getCategories()
+                printAndClearApiRequestResponses()
 
                 if (response.isError == false) {
                     _categoryimage.value = response.Dataword
@@ -41,4 +42,15 @@ class WordSetsViewModel : ViewModel() {
 
         }
     }
-}
+    fun printAndClearApiRequestResponses() {
+        val requestResponses = RetrofitClientUrl.getApiRequestResponses()
+        for ((request, response, statusCode) in requestResponses) {
+            println("Request: $request")
+            println("Response: $response")
+            println("Status Code : $statusCode")
+            println("---------------------------------")
+        }
+        // Clear stored API request-response pairs (if needed)
+        RetrofitClientUrl.clearApiRequestResponses()
+        println("API Request-Response pairs cleared")
+    }}

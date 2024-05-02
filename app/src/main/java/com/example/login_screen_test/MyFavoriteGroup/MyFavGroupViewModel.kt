@@ -24,6 +24,7 @@ class MyFavGroupViewModel : ViewModel() {
             try {
                 val retin = RetrofitClientUrl.getRetrofitInstance(context)
                 val response = retin.getFavKnowItWords()
+                printAndClearApiRequestResponses()
 
                 if (!response.is_error) {
                     _myfavgroupword.value = response.data.favourites
@@ -47,6 +48,7 @@ class MyFavGroupViewModel : ViewModel() {
             try {
                 val retin = RetrofitClientUrl.getRetrofitInstance(context)
                 val response = retin.getcreateFavWordGroup(glcRequest)
+                printAndClearApiRequestResponses()
                 // call on this model cheke the response
                 if (response.isSuccessful) {
                     response.body()
@@ -62,6 +64,18 @@ class MyFavGroupViewModel : ViewModel() {
                 _createlistgroup.value = null
             }
         }
+    }
+    fun printAndClearApiRequestResponses() {
+        val requestResponses = RetrofitClientUrl.getApiRequestResponses()
+        for ((request, response, statusCode) in requestResponses) {
+            println("Request: $request")
+            println("Response: $response")
+            println("Status Code : $statusCode")
+            println("---------------------------------")
+        }
+        // Clear stored API request-response pairs (if needed)
+        RetrofitClientUrl.clearApiRequestResponses()
+        println("API Request-Response pairs cleared")
     }
 
 }

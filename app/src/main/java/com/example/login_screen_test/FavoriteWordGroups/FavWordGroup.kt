@@ -8,7 +8,7 @@ data class FavWordGroup(
 )
 data class Datat(
     val created_at: String,
-    val id: Int,
+    var id: Int,
     val language_module_id: Int,
     val name: String,
     val updated_at: String,

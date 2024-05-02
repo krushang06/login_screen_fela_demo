@@ -50,6 +50,7 @@ class CategoriesWords : Fragment() {
         binding.backbutton.setOnClickListener {
             findNavController().popBackStack()
         }
+
         binding.progressBaraddedwords.visibility = View.VISIBLE
         binding.knowitwordsimg.setOnClickListener {
             type = WordListTypes.KnowIt
@@ -118,8 +119,8 @@ class CategoriesWords : Fragment() {
         recyclerView = binding.ctgwordsRV
         categorieswordsadapter = CategoriesWordsAdapter(
             ArrayList(),
-            recyclerView,
-            onfavroiteclicklistener, onKnowItClickListener
+            onfavroiteclicklistener,
+            onKnowItClickListener
         )
         binding.ctgwordsRV.adapter = categorieswordsadapter
 

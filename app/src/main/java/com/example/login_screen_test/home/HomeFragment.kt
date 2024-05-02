@@ -1,22 +1,14 @@
 package com.example.login_screen_test.home
 
-import android.app.ActionBar
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
-import com.example.login_screen_test.MainActivity
 import com.example.login_screen_test.adapters.BannerAdapter
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import com.example.login_screen_test.R
 import com.example.login_screen_test.adapters.IndicatorAdapterHome
@@ -37,19 +29,16 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-       /* (activity as MainActivity).apply {
-            setSupportActionBar(binding.toolbar)
-            supportActionBar?.let { actionBar ->
-                actionBar.title = "Learn and Practice"
-            }
-        }*/
-
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        viewModel.fetchHomeData(requireContext())
+
+
 
         viewModel.session.observe(viewLifecycleOwner) { session ->
             Log.e("HomeFragment", "Session updated: ${session?.bannerImages?.size ?: 0}")
-            binding.boldTV.text = session?.user?.email?.toString()
-            binding.normalTV.text = session?.user?.name?.toString()
+            binding.boldTV.text = session?.user?.email
+            binding.normalTV.text = session?.user?.name
 
             if (!session?.bannerImages.isNullOrEmpty()) {
                 val fragmentList = ArrayList<Fragment>()
@@ -77,13 +66,11 @@ class HomeFragment : Fragment() {
                     indicatorAdapterHome.updateSelectedHome(position)
                 }
             })
-
         }
         binding.boldTV.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_wordSets)
 
         }
-
         viewModel.fetchHomeData(requireContext())
 
         return binding.root

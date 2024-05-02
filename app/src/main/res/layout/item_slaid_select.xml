@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <CheckBox
+            android:id="@+id/checkboxgp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/chekbox_diffrentcolor"
+            android:checked="false"
+            android:elevation="10dp"
+            android:text=""
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/mainbg"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="61dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="-5dp"
+            android:background="@drawable/graybg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mainbg"
+            app:layout_constraintTop_toTopOf="@+id/mainbg" />
+
+
+        <ImageView
+            android:id="@+id/mainbg"
+            android:layout_width="343dp"
+            android:layout_height="70dp"
+            android:background="@drawable/newaddbg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/favoritegroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="11dp"
+            android:elevation="10dp"
+            android:fontFamily="@font/roboto_regular_400"
+            android:gravity="start"
+            android:maxLines="1"
+            android:text="My Favorite Group 4"
+            android:textColor="#11203A"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/mainbg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cauntnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="9dp"
+            android:fontFamily="@font/roboto_regular_400"
+            android:text="786"
+            android:textColor="#7C8CA1"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@+id/mainbg"
+            app:layout_constraintTop_toBottomOf="@+id/favoritegroup" />
+
+        <TextView
+            android:id="@+id/fixwords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="9dp"
+            android:fontFamily="@font/roboto_regular_400"
+            android:text="Words"
+            android:textColor="#7C8CA1"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toEndOf="@+id/cauntnumber"
+            app:layout_constraintTop_toBottomOf="@+id/favoritegroup" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

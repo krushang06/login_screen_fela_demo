@@ -1,21 +1,15 @@
 package com.example.login_screen_test.home
 
-import android.app.Application
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.login_screen_test.network.FelaApiService
 import com.example.login_screen_test.network.RetrofitClientUrl
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
-import kotlin.time.Duration.Companion.seconds
 
 class HomeViewModel : ViewModel() {
     private val _homeResponse = MutableLiveData<Dataas?>()
@@ -24,6 +18,7 @@ class HomeViewModel : ViewModel() {
     private val _homeimage = MutableLiveData<List<BannerImages?>>()
     val homeimage: MutableLiveData<List<BannerImages?>> = _homeimage
 
+
     fun fetchHomeData(context: Context) {
         viewModelScope.launch {
 
@@ -31,6 +26,8 @@ class HomeViewModel : ViewModel() {
             try {
                 val retIn = RetrofitClientUrl.getRetrofitInstance(context)
                 val response = retIn.fetchHomeData()
+
+//                printAndClearApiRequestResponses()
 
                 if (response.isError == true) {
                     _homeResponse.value = null
@@ -49,5 +46,23 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
+//    fun printAndClearApiRequestResponses() {
+//        val requestResponses = RetrofitClientUrl.getApiRequestResponses()
+//
+//        for ((request, response, statusCode) in requestResponses) {
+//            val headers = arrayOf(requestResponses.map { it.first }.toTypedArray())
+//            val httpCall = HttpCall.Builder()
+//                .withRequestHeaders(buildMap { request })
+//                .withResponseBody(response)
+//                .withStatusText(response)
+//                .withStatusCode(0)
+//                .withUrl(request)
+////                .headers(HttpHeader(listOf(HttpHeader("Content-Type", HttpHeaderValue("application/json"))).toString())) // Example headers
+//                .build()
+//
+//            AndroidSnooper.instance.record(httpCall)
+//        }
+//        RetrofitClientUrl.clearApiRequestResponses()
+//    }
 }
 

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
+import com.example.login_screen_test.FavoriteWordGroups.WordGroupDirections
 import com.example.login_screen_test.GroupListCreate.GLCRequest
 import com.example.login_screen_test.adapters.MyFavGroupAdapter
 import com.example.login_screen_test.databinding.FragmentMyFavGroupsBinding

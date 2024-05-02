@@ -21,6 +21,7 @@ class LoginViewModel : ViewModel() {
                 try {
                     val retIn = RetrofitClientUrl.getRetrofitInstance(context)
                     val response = retIn.fetchData(loginData)
+                    printAndClearApiRequestResponses()
                     PreferencesManager(context).setToken(response.body()?.data!!.sessiontoken)
 
                     if (response.isSuccessful) {
@@ -44,5 +45,17 @@ class LoginViewModel : ViewModel() {
 
     fun clearToken() {
         _token.value = null
+    }
+    fun printAndClearApiRequestResponses() {
+        val requestResponses = RetrofitClientUrl.getApiRequestResponses()
+        for ((request, response, statusCode) in requestResponses) {
+            println("Request: $request")
+            println("Response: $response")
+            println("Status Code : $statusCode")
+            println("---------------------------------")
+        }
+        // Clear stored API request-response pairs (if needed)
+        RetrofitClientUrl.clearApiRequestResponses()
+        println("API Request-Response pairs cleared")
     }
 }

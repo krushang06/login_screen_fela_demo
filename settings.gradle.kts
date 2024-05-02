@@ -10,9 +10,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+//        maven { url = uri("https://jitpack.io") }
+        maven(url = "https://jitpack.io")
+
     }
 }
 
+
 rootProject.name = "login_screen_test"
 include(":app")
- 
+include(":mytoaster")

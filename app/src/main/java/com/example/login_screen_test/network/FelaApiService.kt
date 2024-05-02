@@ -41,5 +41,4 @@ interface FelaApiService {
 
     @POST("group-list/create")
     suspend fun getcreateFavWordGroup(@Body word_id: GLCRequest): Response<creategrouplist>
-
 }

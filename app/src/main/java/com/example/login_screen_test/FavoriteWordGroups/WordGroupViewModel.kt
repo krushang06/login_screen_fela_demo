@@ -19,6 +19,7 @@ class WordGroupViewModel : ViewModel() {
             try {
                 val retin = RetrofitClientUrl.getRetrofitInstance(context)
                 val response = retin.getFavWordGroup()
+                printAndClearApiRequestResponses()
 
                 if (response.is_error == false) {
                     _favwordgroup.value = response.data
@@ -34,6 +35,18 @@ class WordGroupViewModel : ViewModel() {
             }
 
         }
+    }
+    fun printAndClearApiRequestResponses() {
+        val requestResponses = RetrofitClientUrl.getApiRequestResponses()
+        for ((request, response, statusCode) in requestResponses) {
+            println("Request: $request")
+            println("Response: $response")
+            println("Status Code : $statusCode")
+            println("---------------------------------")
+        }
+        // Clear stored API request-response pairs (if needed)
+        RetrofitClientUrl.clearApiRequestResponses()
+        println("API Request-Response pairs cleared")
     }
 
 }

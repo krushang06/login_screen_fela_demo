@@ -22,6 +22,7 @@ class CategoriesWordsViewModel : ViewModel() {
             try {
                 val retin = RetrofitClientUrl.getRetrofitInstance(context)
                 val response = retin.getCategoryWords(id)
+                printAndClearApiRequestResponses()
 
                 if (response.isError == false) {
                     _categoriesword.value = response.data?.categoryWords
@@ -44,6 +45,7 @@ class CategoriesWordsViewModel : ViewModel() {
             try {
                 val retin = RetrofitClientUrl.getRetrofitInstance(context)
                 val response = retin.getFavourite(favoriteData)
+                printAndClearApiRequestResponses()
 
                 if (response.isSuccessful) {
                     response.body()
@@ -63,6 +65,18 @@ class CategoriesWordsViewModel : ViewModel() {
                 _favoriteWord.value = null
             }
         }
+    }
+    fun printAndClearApiRequestResponses() {
+        val requestResponses = RetrofitClientUrl.getApiRequestResponses()
+        for ((request, response, statusCode) in requestResponses) {
+            println("Request: $request")
+            println("Response: $response")
+            println("Status Code : $statusCode")
+            println("---------------------------------")
+        }
+        // Clear stored API request-response pairs (if needed)
+        RetrofitClientUrl.clearApiRequestResponses()
+        println("API Request-Response pairs cleared")
     }
 }
 
